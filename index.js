@@ -6,8 +6,11 @@ const PORT = process.env.PORT || 8001;
 const urlRoutes = require('./routes/url');
 const connectDB = require('./connect');
 const URL=require('./models/url');
+const cors = require('cors');
+app.use(cors());
 
-app.use(express.json()); // <-- added so req.body is populated
+
+app.use(express.json()); 
 app.use("/url", urlRoutes);
 app.get("/:shortId", async(req, res) => {
     const shortId = req.params.shortId;
